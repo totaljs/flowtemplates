@@ -1,0 +1,4 @@
+[
+	{ "url": "https://cdn.totaljs.com/flow/templates/welcome.json", "name": "Getting started", "description": "A simple Flow for beginners", "author": "Peter Širka" },
+	{ "url": "https://cdn.totaljs.com/flow/templates/weather.json", "name": "Weather", "description": "A simple weather parser", "author": "Peter Širka" }
+]

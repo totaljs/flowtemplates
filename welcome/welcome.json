@@ -1,0 +1,72 @@
+{
+	"tabs": [
+		{
+			"id": "1551338900740",
+			"name": "Main",
+			"icon": "fa-object-ungroup",
+			"linker": "main",
+			"index": 0
+		}
+	],
+	"components": [
+		{
+			"id": "1551432669079",
+			"component": "trigger",
+			"tab": "1551338900740",
+			"name": "Hello world!",
+			"x": 161,
+			"y": 279,
+			"connections": {
+				"0": [
+					{
+						"index": "0",
+						"id": "1551432671350"
+					}
+				]
+			},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "",
+				"color": "gray"
+			},
+			"options": {
+				"datatype": "string",
+				"data": "Hello world!"
+			},
+			"color": "#F6BB42",
+			"notes": ""
+		},
+		{
+			"id": "1551432671350",
+			"component": "debug",
+			"tab": "1551338900740",
+			"name": "Debug",
+			"x": 561,
+			"y": 124,
+			"connections": {},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "Enabled",
+				"color": "gray"
+			},
+			"options": {
+				"type": "data",
+				"repository": false,
+				"enabled": true,
+				"logger": false
+			},
+			"color": "#967ADC",
+			"notes": ""
+		}
+	],
+	"variables": "",
+	"panel": "debug",
+	"url": "http://127.0.0.1:8000/#main",
+	"created": "2019-03-01T14:32:11.527Z"
+}

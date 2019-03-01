@@ -1,0 +1,350 @@
+{
+	"tabs": [
+		{
+			"id": "1551471882315",
+			"name": "Weather",
+			"icon": "fa-object-ungroup",
+			"linker": "weather",
+			"index": 0
+		}
+	],
+	"components": [
+		{
+			"id": "1551471895546",
+			"component": "httprequest",
+			"tab": "1551471882315",
+			"name": "HTTP Request",
+			"x": 469,
+			"y": 149,
+			"connections": {
+				"0": [
+					{
+						"index": "0",
+						"id": "1551472146348"
+					},
+					{
+						"index": "0",
+						"id": "1551472874827"
+					},
+					{
+						"index": "0",
+						"id": "1551472911801"
+					}
+				]
+			},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "",
+				"color": "gray"
+			},
+			"options": {
+				"stringify": "encoded",
+				"url": "https://api.openweathermap.org/data/2.5/weather",
+				"method": "GET"
+			},
+			"color": "#5D9CEC",
+			"notes": ""
+		},
+		{
+			"id": "1551471900293",
+			"component": "debug",
+			"tab": "1551471882315",
+			"name": "Debug",
+			"x": 1153,
+			"y": 205,
+			"connections": {},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "Enabled",
+				"color": "gray"
+			},
+			"options": {
+				"type": "data",
+				"repository": false,
+				"enabled": true
+			},
+			"color": "#967ADC",
+			"notes": ""
+		},
+		{
+			"id": "1551472055468",
+			"component": "code",
+			"tab": "1551471882315",
+			"name": "City + Key",
+			"x": 295,
+			"y": 242,
+			"connections": {
+				"0": [
+					{
+						"index": "0",
+						"id": "1551471895546"
+					}
+				]
+			},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "",
+				"color": "gray"
+			},
+			"options": {
+				"keepmessage": true,
+				"code": "var params = {};\nparams.q = 'Banska Bystrica, Slovakia';\nparams.appid = FLOW.variables.weatherkey;\nparams.units = 'metric';\nsend(0, params);",
+				"outputs": 1
+			},
+			"color": "#656D78",
+			"notes": ""
+		},
+		{
+			"id": "1551472146348",
+			"component": "code",
+			"tab": "1551471882315",
+			"name": "Data parser",
+			"x": 726,
+			"y": 211,
+			"connections": {
+				"0": [
+					{
+						"index": "0",
+						"id": "1551471900293"
+					},
+					{
+						"index": "0",
+						"id": "1551472572597"
+					},
+					{
+						"index": "0",
+						"id": "1551472643447"
+					},
+					{
+						"index": "0",
+						"id": "1551472660345"
+					},
+					{
+						"index": "0",
+						"id": "1551472745363"
+					}
+				]
+			},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "",
+				"color": "gray"
+			},
+			"options": {
+				"outputs": 1,
+				"code": "var data = value.data.parseJSON(true);\nif (data)\n\tsend(0, data);",
+				"keepmessage": true
+			},
+			"color": "#656D78",
+			"notes": ""
+		},
+		{
+			"id": "1551472572597",
+			"component": "dashboardanalytics",
+			"tab": "1551471882315",
+			"name": "Temperature",
+			"x": 1153,
+			"y": 347,
+			"connections": {},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "4.15 °C",
+				"color": "gray"
+			},
+			"options": {
+				"statsyears": 5,
+				"statsmonths": 12,
+				"statsdays": 14,
+				"statshours": 24,
+				"decimals": 2,
+				"format": "{0} °C",
+				"fn": "next(value.main.temp);",
+				"type": "median"
+			},
+			"color": "#5CB36D",
+			"notes": ""
+		},
+		{
+			"id": "1551472643447",
+			"component": "dashboardanalytics",
+			"tab": "1551471882315",
+			"name": "Pressure",
+			"x": 1154,
+			"y": 476,
+			"connections": {},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "1 008.00 hPa",
+				"color": "gray"
+			},
+			"options": {
+				"statsyears": 5,
+				"statsmonths": 12,
+				"statsdays": 14,
+				"statshours": 24,
+				"decimals": 2,
+				"format": "{0} hPa",
+				"fn": "next(value.main.pressure);",
+				"type": "median"
+			},
+			"color": "#5CB36D",
+			"notes": ""
+		},
+		{
+			"id": "1551472660345",
+			"component": "dashboardanalytics",
+			"tab": "1551471882315",
+			"name": "Humidity",
+			"x": 1152,
+			"y": 595,
+			"connections": {},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "87 %",
+				"color": "gray"
+			},
+			"options": {
+				"statsyears": 5,
+				"statsmonths": 12,
+				"statsdays": 14,
+				"statshours": 24,
+				"decimals": 0,
+				"format": "{0} %",
+				"fn": "next(value.main.humidity);",
+				"type": "median"
+			},
+			"color": "#5CB36D",
+			"notes": ""
+		},
+		{
+			"id": "1551472745363",
+			"component": "dashboardanalytics",
+			"tab": "1551471882315",
+			"name": "Cloudiness",
+			"x": 1151,
+			"y": 712,
+			"connections": {},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "90 %",
+				"color": "gray"
+			},
+			"options": {
+				"statsyears": 5,
+				"statsmonths": 12,
+				"statsdays": 14,
+				"statshours": 24,
+				"decimals": 0,
+				"format": "{0} %",
+				"fn": "if (value.clouds && value.clouds.all)\n\tnext(value.clouds.all);",
+				"type": "median"
+			},
+			"color": "#5CB36D",
+			"notes": ""
+		},
+		{
+			"id": "1551472874827",
+			"component": "counter",
+			"tab": "1551471882315",
+			"name": "Counter",
+			"x": 724,
+			"y": 322,
+			"connections": {},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "3",
+				"color": "gray"
+			},
+			"options": {
+				"enabled": true
+			},
+			"color": "#656D78",
+			"notes": ""
+		},
+		{
+			"id": "1551472911801",
+			"component": "lastusage",
+			"tab": "1551471882315",
+			"name": "Last Usage",
+			"x": 724,
+			"y": 433,
+			"connections": {},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "01.03.2019 21:48:17",
+				"color": "gray"
+			},
+			"options": {
+				"format": "dd.MM.yyyy HH:mm:ss"
+			},
+			"color": "#656D78",
+			"notes": ""
+		},
+		{
+			"id": "1551473223804",
+			"component": "timer",
+			"tab": "1551471882315",
+			"name": "20 minutes",
+			"x": 72,
+			"y": 246,
+			"connections": {
+				"0": [
+					{
+						"index": "0",
+						"id": "1551472055468"
+					}
+				]
+			},
+			"disabledio": {
+				"input": [],
+				"output": []
+			},
+			"state": {
+				"text": "",
+				"color": "gray"
+			},
+			"options": {
+				"interval": 1200000,
+				"data": "Empty value",
+				"datatype": "string"
+			},
+			"color": "#F6BB42",
+			"notes": ""
+		}
+	],
+	"variables": "weatherkey       : be992147b586d934aac9f27452681bbc",
+	"notes": "# Weather template\n\n- obtain API key on [https://openweathermap.org](https://openweathermap.org/)\n- and add it to `Variables`",
+	"panel": "debug",
+	"url": "http://127.0.0.1:8000/#weather",
+	"created": "2019-03-01T20:48:31.724Z"
+}
