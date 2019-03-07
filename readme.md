@@ -4,7 +4,7 @@ This repository contains __Total.js Flow templates__.
 
 __Requirements__:
 
-- install Node.js platform +v6
+- install Node.js platform +v10
 - install Total.js framework `$ npm install total.js`
 - important __Flow 6.0__
 
